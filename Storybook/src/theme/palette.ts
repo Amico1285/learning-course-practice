@@ -1,10 +1,5 @@
 import type { PaletteOptions } from '@mui/material';
 
-/**
- * Light mode palette — the default color scheme.
- * All color tokens are centralized here as the single source of truth
- * for future Figma sync.
- */
 export const lightPalette: PaletteOptions = {
   mode: 'light',
   primary: {
@@ -23,18 +18,13 @@ export const lightPalette: PaletteOptions = {
   },
 };
 
-/**
- * Dark mode palette.
- * Primary and secondary stay the same for brand consistency;
- * background and text are adjusted for dark surfaces.
- */
 export const darkPalette: PaletteOptions = {
   mode: 'dark',
   primary: {
-    main: '#818CF8', // slightly lighter indigo for dark backgrounds
+    main: '#818CF8',
   },
   secondary: {
-    main: '#F472B6', // slightly lighter pink for dark backgrounds
+    main: '#F472B6',
   },
   background: {
     default: '#0F172A',
@@ -46,8 +36,5 @@ export const darkPalette: PaletteOptions = {
   },
 };
 
-/**
- * @deprecated Use `lightPalette` or `darkPalette` instead.
- * Kept for backwards compatibility — identical to `lightPalette`.
- */
-export const palette: PaletteOptions = lightPalette;
+/** @deprecated Use lightPalette or darkPalette instead */
+export const palette = lightPalette;
