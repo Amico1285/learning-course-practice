@@ -9,12 +9,10 @@ import Box from '@mui/material/Box';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DashboardPage from './pages/DashboardPage';
-import FormPage from './pages/FormPage';
 import ListPage from './pages/ListPage';
 
 const pages = [
   { label: 'Dashboard', path: '/' },
-  { label: 'Form', path: '/form' },
   { label: 'List', path: '/list' },
 ];
 
@@ -60,7 +58,6 @@ export default function App({ isDark, onToggleTheme }: AppProps) {
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4, flex: 1 }}>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
-          <Route path="/form" element={<FormPage />} />
           <Route path="/list" element={<ListPage />} />
         </Routes>
       </Container>
