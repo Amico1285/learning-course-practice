@@ -5,6 +5,9 @@ node_modules/
 Storybook/storybook-static/
 Demo_project/dist/
 
+# Angular cache
+.angular/
+
 # OS
 .DS_Store
 

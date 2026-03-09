@@ -2,7 +2,7 @@
 @import "bootstrap/scss/functions";
 
 // 2. Custom variable overrides
-// --- Colors (matching our MUI palette) ---
+// --- Colors (Bootstrap theme colors) ---
 $primary:   #1976D2;
 $secondary: #9C27B0;
 $success:   #2E7D32;
@@ -42,6 +42,9 @@ $btn-font-weight: 500;
 @import "bootstrap/scss/card";
 @import "bootstrap/scss/alert";
 @import "bootstrap/scss/badge";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/close";
 
