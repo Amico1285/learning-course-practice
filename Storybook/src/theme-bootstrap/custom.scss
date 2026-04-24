@@ -1,38 +1,203 @@
-// 1. Include functions first
+// =============================================================================
+// 1. Include functions first (required before variable overrides)
+// =============================================================================
 @import "bootstrap/scss/functions";
 
-// 2. Custom variable overrides
-// --- Colors (Bootstrap theme colors) ---
-$primary:   #1976D2;
-$secondary: #9C27B0;
-$success:   #2E7D32;
-$info:      #0288D1;
-$warning:   #EF6C00;
-$danger:    #D32F2F;
+// =============================================================================
+// 2. Palette primitives (from Figma Palette.json)
+//    Raw color values — single source of truth for all tokens
+// =============================================================================
+
+// Product
+$palette-product-main: #ff0030;
+
+// White scale
+$palette-white-main: #ffffff;
+$palette-white-90: rgba(255, 255, 255, 0.9);
+$palette-white-80: rgba(255, 255, 255, 0.8);
+$palette-white-70: rgba(255, 255, 255, 0.7);
+$palette-white-64: rgba(255, 255, 255, 0.64);
+$palette-white-60: rgba(255, 255, 255, 0.6);
+$palette-white-50: rgba(255, 255, 255, 0.5);
+$palette-white-44: rgba(255, 255, 255, 0.44);
+$palette-white-40: rgba(255, 255, 255, 0.4);
+$palette-white-32: rgba(255, 255, 255, 0.32);
+$palette-white-24: rgba(255, 255, 255, 0.24);
+$palette-white-20: rgba(255, 255, 255, 0.24);
+$palette-white-16: rgba(255, 255, 255, 0.16);
+$palette-white-12: rgba(255, 255, 255, 0.12);
+$palette-white-10: rgba(255, 255, 255, 0.1);
+$palette-white-8: rgba(255, 255, 255, 0.08);
+$palette-white-6: rgba(255, 255, 255, 0.06);
+$palette-white-4: rgba(255, 255, 255, 0.04);
+
+// Black scale
+$palette-black-main: #000000;
+$palette-black-minor: #333333;
+$palette-black-80: rgba(0, 0, 0, 0.8);
+$palette-black-70: rgba(0, 0, 0, 0.7);
+$palette-black-40: rgba(0, 0, 0, 0.4);
+$palette-black-32: rgba(0, 0, 0, 0.32);
+$palette-black-24: rgba(0, 0, 0, 0.24);
+$palette-black-20: rgba(0, 0, 0, 0.2);
+$palette-black-16: rgba(0, 0, 0, 0.16);
+$palette-black-10: rgba(0, 0, 0, 0.1);
+$palette-black-8: rgba(0, 0, 0, 0.08);
+$palette-black-6: rgba(0, 0, 0, 0.06);
+$palette-black-4: rgba(0, 0, 0, 0.04);
+
+// Blue-black scale
+$palette-blue-black-main: #414b62;
+$palette-blue-black-90: rgba(65, 75, 98, 0.9);
+$palette-blue-black-80: rgba(65, 75, 98, 0.8);
+$palette-blue-black-70: rgba(65, 75, 98, 0.7);
+$palette-blue-black-64: rgba(65, 75, 98, 0.64);
+$palette-blue-black-60: rgba(65, 75, 98, 0.6);
+$palette-blue-black-50: rgba(65, 75, 98, 0.5);
+$palette-blue-black-44: rgba(65, 75, 98, 0.44);
+$palette-blue-black-40: rgba(65, 75, 98, 0.4);
+$palette-blue-black-32: rgba(65, 75, 98, 0.32);
+$palette-blue-black-24: rgba(65, 75, 98, 0.24);
+$palette-blue-black-16: rgba(65, 75, 98, 0.16);
+$palette-blue-black-12: rgba(65, 75, 98, 0.12);
+$palette-blue-black-8: rgba(65, 75, 98, 0.08);
+$palette-blue-black-6: rgba(65, 75, 98, 0.06);
+$palette-blue-black-4: rgba(65, 75, 98, 0.04);
+
+// Grey scale
+$palette-grey-1: #f0f0f0;
+$palette-grey-2: #f0f0f0;
+$palette-grey-3: #ebebeb;
+$palette-grey-5: #dadada;
+$palette-grey-7: #959595;
+$palette-grey-8: #5d5d5d;
+$palette-grey-9: #4f4f4f;
+$palette-grey-10: #393939;
+
+// Blue-grey scale
+$palette-blue-grey-1: #f5f6f7;
+$palette-blue-grey-2: #f0f1f3;
+$palette-blue-grey-4: #e6e7eb;
+$palette-blue-grey-5: #d8dbe0;
+$palette-blue-grey-5-30: rgba(216, 219, 224, 0.3);
+$palette-blue-grey-7: #aaafb9;
+$palette-blue-grey-8: #748097;
+$palette-blue-grey-9: #4e5a74;
+
+// Red scale
+$palette-red-main: #ff3d61;
+$palette-red-1: #ffd6de;
+$palette-red-2: #ffa3b4;
+$palette-red-4: #ff5c7a;
+$palette-red-6-80: rgba(255, 128, 151, 0.8);
+$palette-red-8: #85404d;
+$palette-red-9: #754f56;
+
+// Green scale
+$palette-green-main: #60b076;
+$palette-green-1: #d1f0d9;
+$palette-green-2: #aae5bb;
+$palette-green-4: #54d179;
+$palette-green-6-80: rgba(102, 204, 131, 0.8);
+$palette-green-8: #356b45;
+$palette-green-9: #495c4f;
+
+// Blue scale
+$palette-blue-main: #4a7dff;
+$palette-blue-1: #d9e4ff;
+$palette-blue-3: #b8ccff;
+$palette-blue-3-30: rgba(184, 204, 255, 0.3);
+$palette-blue-4: #4eb5ff;
+$palette-blue-6-80: rgba(128, 164, 255, 0.8);
+$palette-blue-9: #505a75;
+
+// Yellow scale
+$palette-yellow-main: #ec9f00;
+$palette-yellow-1: #ffe3ac;
+$palette-yellow-3: #ffd88a;
+$palette-yellow-3-30: rgba(255, 216, 138, 0.3);
+$palette-yellow-4: #ffc701;
+$palette-yellow-6-80: rgba(255, 204, 102, 0.8);
+$palette-yellow-9: #756950;
+
+// Purple scale
+$palette-purple-main: #816bb2;
+$palette-purple-1: #ede5ff;
+$palette-purple-6-80: rgba(201, 178, 255, 0.8);
+$palette-purple-9: #5b5075;
+
+// =============================================================================
+// 3. Bootstrap SCSS variable overrides (using Palette primitives)
+// =============================================================================
+
+// --- Theme colors (used for class generation: .btn-*, .text-*, .bg-*) ---
+$primary:   $palette-black-minor;     // #333333
+$secondary: $palette-blue-grey-7;     // #aaafb9
+$success:   $palette-green-main;      // #60b076
+$info:      $palette-blue-main;       // #4a7dff
+$warning:   $palette-yellow-main;     // #ec9f00
+$danger:    $palette-red-main;        // #ff3d61
 
 // --- Typography ---
-$font-family-base: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
-$headings-font-weight: 600;
+$font-family-base: "Inter", "Helvetica", "Arial", sans-serif;
+$font-family-number: "Noto Sans", "Inter", "Helvetica", "Arial", sans-serif;
+$headings-font-weight: 500;
 
 // --- Shape ---
-$border-radius:    0.5rem;
-$border-radius-sm: 0.375rem;
-$border-radius-lg: 0.625rem;
+$border-radius:    8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 12px;
+$border-radius-pill: 9999px;
 
-// --- Buttons ---
-$btn-font-weight: 500;
+// --- Button defaults (Figma size M = Bootstrap default) ---
+$btn-font-weight:    500;
+$btn-font-family:    "Inter", sans-serif;
+$btn-border-radius:  8px;
+$btn-padding-y:      10px;
+$btn-padding-x:      10px;
+$btn-font-size:      14px;
+$btn-line-height:    20px;
 
-// 3. Include Bootstrap
+// --- Button large (Figma size XL = Bootstrap btn-lg) ---
+$btn-padding-y-lg:   16px;
+$btn-padding-x-lg:   16px;
+$btn-font-size-lg:   16px;
+$btn-line-height-lg: 24px;
+$btn-border-radius-lg: 12px;
+
+// --- Button small (keep for compatibility) ---
+$btn-padding-y-sm:   6px;
+$btn-padding-x-sm:   8px;
+$btn-font-size-sm:   12px;
+$btn-border-radius-sm: 4px;
+
+// --- Disable default Bootstrap focus shadow ---
+$btn-focus-box-shadow: none;
+
+// =============================================================================
+// 4. Include Bootstrap variables, maps, mixins, root
+// =============================================================================
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
+
+// Add "accent" color to the theme-colors map (generates .btn-accent automatically)
+$custom-colors: (
+  "accent": $palette-green-2 // #aae5bb
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 
-// 4. Utilities BEFORE components (per docs)
+// =============================================================================
+// 5. Utilities BEFORE components (per Bootstrap docs)
+// =============================================================================
 @import "bootstrap/scss/utilities";
 
-// 5. Include Bootstrap components
+// =============================================================================
+// 6. Include Bootstrap components
+// =============================================================================
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/containers";
@@ -48,5 +213,509 @@ $btn-font-weight: 500;
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/close";
 
-// 6. Utilities API LAST (generates utility classes)
+// =============================================================================
+// 7. Utilities API LAST (generates utility classes)
+// =============================================================================
 @import "bootstrap/scss/utilities/api";
+
+// =============================================================================
+// 8. Semantic design tokens — Light mode (from Figma Colors.json)
+//    All 84 tokens resolved through Palette primitives
+// =============================================================================
+:root,
+[data-bs-theme="light"] {
+  // --- Button ---
+  --button-primary: #{$palette-black-minor};
+  --button-accent: #{$palette-green-2};
+  --button-hover: #{$palette-blue-black-6};
+  --button-pressed: #{$palette-blue-black-12};
+  --button-disabled: #{$palette-grey-2};
+  --button-primary-inverse: #{$palette-white-80};
+  --button-primary-on-color: #{$palette-white-80};
+  --button-disabled-add: #{$palette-grey-3};
+
+  // --- Text ---
+  --text-primary: #{$palette-black-minor};
+  --text-primary-inverse: #{$palette-white-main};
+  --text-primary-on-color: #{$palette-white-main};
+  --text-secondary: #{$palette-blue-black-70};
+  --text-tertiary: #{$palette-blue-black-50};
+  --text-quaternary: #{$palette-blue-black-44};
+  --text-disabled: #{$palette-black-24};
+  --text-disabled-inverse: #{$palette-white-24};
+  --text-priority: #{$palette-black-main};
+  --text-critical: #{$palette-red-main};
+  --text-critical-inverse: #{$palette-red-4};
+  --text-success: #{$palette-green-main};
+  --text-success-inverse: #{$palette-green-4};
+  --text-caution: #{$palette-yellow-main};
+  --text-caution-inverse: #{$palette-yellow-4};
+  --text-info: #{$palette-blue-main};
+  --text-info-inverse: #{$palette-blue-4};
+
+  // --- Icon ---
+  --icon-primary: #{$palette-blue-black-90};
+  --icon-primary-inverse: #{$palette-white-90};
+  --icon-primary-on-color: #{$palette-white-main};
+  --icon-secondary: #{$palette-blue-black-60};
+  --icon-tertiary: #{$palette-blue-black-40};
+  --icon-disabled: #{$palette-black-20};
+  --icon-disabled-inverse: #{$palette-white-20};
+  --icon-priority: #{$palette-black-minor};
+  --icon-priority-inverse: #{$palette-white-main};
+  --icon-critical: #{$palette-red-main};
+  --icon-critical-inverse: #{$palette-red-4};
+  --icon-success: #{$palette-green-main};
+  --icon-success-inverse: #{$palette-green-4};
+  --icon-caution: #{$palette-yellow-main};
+  --icon-caution-inverse: #{$palette-yellow-4};
+  --icon-info: #{$palette-blue-main};
+  --icon-info-inverse: #{$palette-blue-4};
+  --icon-debug: #{$palette-purple-main};
+  --icon-product-main: #{$palette-product-main};
+  --icon-product-red-white: #{$palette-product-main};
+  --icon-product-white-red: #{$palette-white-main};
+  --icon-product-black-white: #{$palette-black-minor};
+  --icon-product-white-black: #{$palette-white-main};
+  --icon-product-grey-white: #{$palette-grey-8};
+  --icon-product-white-grey: #{$palette-white-main};
+
+  // --- Border ---
+  --border-primary: #{$palette-blue-black-80};
+  --border-tertiary: #{$palette-blue-black-32};
+  --border-disabled: #{$palette-black-16};
+  --border-disabled-add: #{$palette-black-10};
+  --border-priority: #{$palette-black-minor};
+  --border-critical: #{$palette-red-main};
+  --border-success: #{$palette-green-main};
+  --border-caution: #{$palette-yellow-main};
+  --border-info: #{$palette-blue-main};
+
+  // --- Background ---
+  --bg-primary: #{$palette-white-main};
+  --bg-secondary: #{$palette-blue-grey-2};
+  --bg-tertiary: #{$palette-blue-grey-1};
+  --bg-quaternary: #{$palette-black-4};
+  --bg-section: #{$palette-blue-grey-4};
+
+  // --- Fill ---
+  --fill-hover: #{$palette-blue-black-6};
+  --fill-pressed: #{$palette-blue-black-12};
+  --fill-disabled: #{$palette-grey-1};
+  --fill-disabled-add: #{$palette-white-main};
+  --fill-primary: #{$palette-blue-grey-7};
+  --fill-secondary: #{$palette-blue-grey-5};
+  --fill-hint: #{$palette-grey-9};
+  --fill-switch: #{$palette-black-minor};
+  --fill-fade: #{$palette-blue-black-24};
+  --fill-fade-inverse: #{$palette-white-80};
+  --fill-critical: #{$palette-red-1};
+  --fill-success: #{$palette-green-1};
+  --fill-caution: #{$palette-yellow-1};
+  --fill-info: #{$palette-blue-1};
+  --fill-focused: #{$palette-yellow-3};
+  --fill-selected: #{$palette-blue-3};
+  --fill-debug: #{$palette-purple-1};
+
+  // --- Effects ---
+  --effects-primary: #{$palette-blue-black-24};
+  --effects-secondary: #{$palette-blue-black-8};
+  --effects-tertiary: #{$palette-blue-black-4};
+
+  // --- Typography tokens ---
+  // Font families
+  --font-family-primary: "Inter", "Helvetica", "Arial", sans-serif;
+  --font-family-number: "Noto Sans", "Inter", "Helvetica", "Arial", sans-serif;
+
+  // Title (Inter, Medium 500)
+  --title-h1-size: 28px;
+  --title-h1-weight: 500;
+  --title-h1-line-height: 40px;
+  --title-h2-size: 24px;
+  --title-h2-weight: 500;
+  --title-h2-line-height: 32px;
+  --title-h3-size: 20px;
+  --title-h3-weight: 500;
+  --title-h3-line-height: 28px;
+
+  // Label (Inter, Medium 500)
+  --label-xl-size: 20px;
+  --label-xl-weight: 500;
+  --label-xl-line-height: 28px;
+  --label-l-size: 16px;
+  --label-l-weight: 500;
+  --label-l-line-height: 24px;
+  --label-m-size: 14px;
+  --label-m-weight: 500;
+  --label-m-line-height: 20px;
+
+  // Body (Inter, Regular 400)
+  --body-xl-size: 20px;
+  --body-xl-weight: 400;
+  --body-xl-line-height: 28px;
+  --body-l-size: 16px;
+  --body-l-weight: 400;
+  --body-l-line-height: 24px;
+  --body-m-size: 14px;
+  --body-m-weight: 400;
+  --body-m-line-height: 20px;
+  --body-s-size: 13px;
+  --body-s-weight: 400;
+  --body-s-line-height: 18px;
+
+  // Number (Noto Sans)
+  --number-xxl-size: 24px;
+  --number-xxl-weight: 500;
+  --number-xxl-line-height: 32px;
+  --number-xl-size: 20px;
+  --number-xl-weight: 400;
+  --number-xl-line-height: 28px;
+  --number-l-size: 16px;
+  --number-l-weight: 400;
+  --number-l-line-height: 24px;
+  --number-l-significant-size: 16px;
+  --number-l-significant-weight: 600;
+  --number-l-significant-line-height: 24px;
+  --number-m-size: 14px;
+  --number-m-weight: 400;
+  --number-m-line-height: 20px;
+
+  // --- Spacing tokens ---
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  // --- Border radius tokens ---
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px;
+
+  // --- Shadow tokens ---
+  --shadow-sm: 0px 4px 12px 0px var(--effects-secondary), 0px 1px 1px 0px var(--effects-tertiary);
+  --shadow-md: 0px 8px 24px 0px var(--effects-primary), 0px 1px 4px 0px var(--effects-secondary);
+  --shadow-lg: 0px 20px 64px 0px var(--effects-primary), 0px 2px 12px 0px var(--effects-secondary);
+}
+
+// =============================================================================
+// 9. Semantic design tokens — Dark mode (from Figma Colors.json)
+// =============================================================================
+[data-bs-theme="dark"] {
+  // --- Button ---
+  --button-primary: #{$palette-white-90};
+  --button-accent: #{$palette-green-8};
+  --button-hover: #{$palette-white-8};
+  --button-pressed: #{$palette-white-12};
+  --button-disabled: #{$palette-white-6};
+  --button-primary-inverse: #{$palette-black-minor};
+  --button-primary-on-color: #{$palette-white-80};
+  --button-disabled-add: #{$palette-white-8};
+
+  // --- Text ---
+  --text-primary: #{$palette-white-main};
+  --text-primary-inverse: #{$palette-black-minor};
+  --text-primary-on-color: #{$palette-white-main};
+  --text-secondary: #{$palette-white-70};
+  --text-tertiary: #{$palette-white-50};
+  --text-quaternary: #{$palette-white-44};
+  --text-disabled: #{$palette-white-24};
+  --text-disabled-inverse: #{$palette-black-24};
+  --text-priority: #{$palette-white-main};
+  --text-critical: #{$palette-red-6-80};
+  --text-critical-inverse: #{$palette-red-main};
+  --text-success: #{$palette-green-6-80};
+  --text-success-inverse: #{$palette-green-main};
+  --text-caution: #{$palette-yellow-6-80};
+  --text-caution-inverse: #{$palette-yellow-main};
+  --text-info: #{$palette-blue-6-80};
+  --text-info-inverse: #{$palette-blue-main};
+
+  // --- Icon ---
+  --icon-primary: #{$palette-white-90};
+  --icon-primary-inverse: #{$palette-black-minor};
+  --icon-primary-on-color: #{$palette-white-main};
+  --icon-secondary: #{$palette-white-60};
+  --icon-tertiary: #{$palette-white-40};
+  --icon-disabled: #{$palette-white-20};
+  --icon-disabled-inverse: #{$palette-black-20};
+  --icon-priority: #{$palette-white-main};
+  --icon-priority-inverse: #{$palette-black-minor};
+  --icon-critical: #{$palette-red-6-80};
+  --icon-critical-inverse: #{$palette-red-main};
+  --icon-success: #{$palette-green-6-80};
+  --icon-success-inverse: #{$palette-green-main};
+  --icon-caution: #{$palette-yellow-6-80};
+  --icon-caution-inverse: #{$palette-yellow-main};
+  --icon-info: #{$palette-blue-6-80};
+  --icon-info-inverse: #{$palette-blue-main};
+  --icon-debug: #{$palette-purple-6-80};
+  --icon-product-main: #{$palette-product-main};
+  --icon-product-red-white: #{$palette-white-main};
+  --icon-product-white-red: #{$palette-product-main};
+  --icon-product-black-white: #{$palette-white-main};
+  --icon-product-white-black: #{$palette-black-minor};
+  --icon-product-grey-white: #{$palette-white-main};
+  --icon-product-white-grey: #{$palette-grey-8};
+
+  // --- Border ---
+  --border-primary: #{$palette-white-80};
+  --border-tertiary: #{$palette-white-32};
+  --border-disabled: #{$palette-white-16};
+  --border-disabled-add: #{$palette-white-10};
+  --border-priority: #{$palette-white-main};
+  --border-critical: #{$palette-red-6-80};
+  --border-success: #{$palette-green-6-80};
+  --border-caution: #{$palette-yellow-6-80};
+  --border-info: #{$palette-blue-6-80};
+
+  // --- Background ---
+  --bg-primary: #{$palette-black-minor};
+  --bg-secondary: #{$palette-grey-9};
+  --bg-tertiary: #{$palette-grey-9};
+  --bg-quaternary: #{$palette-white-4};
+  --bg-section: #{$palette-black-main};
+
+  // --- Fill ---
+  --fill-hover: #{$palette-white-8};
+  --fill-pressed: #{$palette-white-12};
+  --fill-disabled: #{$palette-grey-9};
+  --fill-disabled-add: #{$palette-grey-9};
+  --fill-primary: #{$palette-grey-7};
+  --fill-secondary: #{$palette-blue-grey-5-30};
+  --fill-hint: #{$palette-grey-5};
+  --fill-switch: #{$palette-black-main};
+  --fill-fade: #{$palette-black-24};
+  --fill-fade-inverse: #{$palette-black-80};
+  --fill-critical: #{$palette-red-9};
+  --fill-success: #{$palette-green-9};
+  --fill-caution: #{$palette-yellow-9};
+  --fill-info: #{$palette-blue-9};
+  --fill-focused: #{$palette-yellow-3-30};
+  --fill-selected: #{$palette-blue-3-30};
+  --fill-debug: #{$palette-purple-9};
+
+  // --- Effects ---
+  --effects-primary: #{$palette-black-24};
+  --effects-secondary: #{$palette-black-8};
+  --effects-tertiary: #{$palette-black-4};
+}
+
+// =============================================================================
+// 10. Custom button variant overrides (Figma styles via Bootstrap CSS vars)
+//     All styles reference semantic tokens — auto-switch in dark mode
+// =============================================================================
+
+// --- .btn-primary (Filled dark) ---
+.btn-primary {
+  --bs-btn-bg: var(--button-primary);
+  --bs-btn-border-color: var(--button-primary);
+  --bs-btn-color: var(--text-primary-inverse);
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: var(--border-primary);
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-active-bg: var(--button-pressed);
+  --bs-btn-active-border-color: var(--border-primary);
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-disabled-bg: var(--button-disabled);
+  --bs-btn-disabled-border-color: var(--button-disabled);
+  --bs-btn-disabled-color: var(--text-disabled);
+}
+
+// --- .btn-accent (Filled green) ---
+.btn-accent {
+  --bs-btn-bg: var(--button-accent);
+  --bs-btn-border-color: var(--button-accent);
+  --bs-btn-color: var(--text-primary);
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: var(--border-primary);
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-active-bg: var(--button-pressed);
+  --bs-btn-active-border-color: var(--border-primary);
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-disabled-bg: var(--button-disabled);
+  --bs-btn-disabled-border-color: var(--button-disabled);
+  --bs-btn-disabled-color: var(--text-disabled);
+
+  .btn-icon svg {
+    color: var(--icon-primary);
+  }
+}
+
+// --- .btn-outline (Outline — border only, no fill) ---
+.btn-outline {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--border-primary);
+  --bs-btn-color: var(--text-primary);
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: var(--border-primary);
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-active-bg: var(--button-pressed);
+  --bs-btn-active-border-color: var(--border-primary);
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--border-disabled);
+  --bs-btn-disabled-color: var(--text-disabled);
+}
+
+// --- .btn-ghost (Outline + icon) ---
+.btn-ghost {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--border-primary);
+  --bs-btn-color: var(--text-primary);
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: var(--border-primary);
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-active-bg: var(--button-pressed);
+  --bs-btn-active-border-color: var(--border-primary);
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--border-disabled);
+  --bs-btn-disabled-color: var(--text-disabled);
+}
+
+// --- .btn-text (Flat — no background, no border) ---
+.btn-text {
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-color: var(--text-primary);
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-hover-color: var(--text-primary);
+  --bs-btn-active-bg: var(--button-pressed);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-active-color: var(--text-primary);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: transparent;
+  --bs-btn-disabled-color: var(--text-disabled);
+}
+
+// =============================================================================
+// 11. Focus ring (Figma: 2px outline, offset -2px)
+// =============================================================================
+.btn:focus-visible,
+.btn.pseudo-focus-visible {
+  outline: 2px solid var(--border-primary);
+  outline-offset: -2px;
+  box-shadow: none;
+}
+
+// =============================================================================
+// 12. Pseudo-state classes for Storybook showcase (static state display)
+// =============================================================================
+.btn.pseudo-hover {
+  background-color: var(--bs-btn-hover-bg);
+  border-color: var(--bs-btn-hover-border-color);
+  color: var(--bs-btn-hover-color);
+}
+
+.btn.pseudo-pressed {
+  background-color: var(--bs-btn-active-bg);
+  border-color: var(--bs-btn-active-border-color);
+  color: var(--bs-btn-active-color);
+}
+
+// =============================================================================
+// 13. Button icon styles
+// =============================================================================
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// Size M icon
+.btn .btn-icon {
+  width: 20px;
+  height: 20px;
+}
+
+// Size XL (btn-lg) icon
+.btn-lg .btn-icon,
+.btn-group-lg > .btn .btn-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.btn .btn-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+// Disabled icon color
+.btn:disabled .btn-icon svg,
+.btn.disabled .btn-icon svg {
+  color: var(--icon-disabled);
+}
+
+// =============================================================================
+// 14. Loading spinner (Figma: conic-gradient)
+// =============================================================================
+.btn-spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 90deg at 50% 50%,
+    rgba(51, 51, 51, 0.12) 0deg,
+    #333333 360deg
+  );
+  animation: btn-spin 0.8s linear infinite;
+}
+
+// Size M spinner
+.btn .btn-spinner {
+  width: 17px;
+  height: 17px;
+}
+
+// Size XL (btn-lg) spinner
+.btn-lg .btn-spinner,
+.btn-group-lg > .btn .btn-spinner {
+  width: 20px;
+  height: 20px;
+}
+
+// White spinner for dark backgrounds (primary variant)
+.btn-primary .btn-spinner {
+  background: conic-gradient(
+    from 90deg at 50% 50%,
+    rgba(255, 255, 255, 0.2) 0deg,
+    white 360deg
+  );
+}
+
+@keyframes btn-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// =============================================================================
+// 15. Showcase grid helper (for Storybook stories)
+// =============================================================================
+.showcase-grid {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+}
+
+.showcase-label {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+.showcase-header {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  opacity: 0.5;
+}
